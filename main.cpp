@@ -2,8 +2,19 @@
 #include <string>
 #include <vector>
 #include <windows.h>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
+
+string konwerjsaIntNaString (int liczba)
+{
+    ostringstream ss;
+    ss << liczba;
+    string lancuch = ss.str();
+    return lancuch;
+}
+
 /*
 Klasa na podstawie, ktorej jest tworzony obiekt uzytkownik (z prywatnymipolamioraz publicznymi getterami i setterami).
 */
@@ -62,11 +73,97 @@ public:
         return haslo;
     }
 };
+
+/*
+Klasa odpowiedzialna za operacje na pliku Uzytkownicy.txt
+*/
+class PlikUzytkownicy :public virtual Uzytkownik
+{
+
+    fstream plik;
+
+public:
+    void wczytajUzytkownikowZPliku( vector <Uzytkownik> &uzytkownicy)
+    {
+        string linia;
+        string wyraz;
+        int iloscPionowychKresek = 0;
+        int ileZnakowWyjac = 0;
+        int poczatek = 0 ;
+
+        uzytkownicy.clear();
+        plik.open("Uzytkownicy.txt",ios::in); // aby otworzyc plik do odczytu
+        if (plik.good() == true)
+        {
+            while (getline(plik,linia))
+            {
+                ileZnakowWyjac = 0;
+                poczatek = 0;
+                iloscPionowychKresek = 0;
+
+                for (int i = 0; i < linia.size(); i++)
+                {
+                    ileZnakowWyjac = i - poczatek;
+                    if (linia[i] == '|')
+                    {
+                        iloscPionowychKresek++;
+                        wyraz = linia.substr (poczatek,ileZnakowWyjac);
+                        switch (iloscPionowychKresek)
+                        {
+                        case 1:
+                            setIdUzytkownika(atoi(wyraz.c_str()));
+                            break;
+                        case 2:
+                            setNazwaUzytkownika(wyraz);
+                            break;
+                        case 3:
+                            setHasloUzytkownika(wyraz);
+                            break;
+                        }
+                        poczatek = poczatek + ileZnakowWyjac + 1;
+                    }
+                }
+
+                uzytkownicy.push_back(Uzytkownik(getIdUzytkownika(), getNazwaUzytkownika(), getHasloUzytkownika()));
+                cout << getIdUzytkownika() << getNazwaUzytkownika() << getHasloUzytkownika() << endl;
+            }
+            plik.close();
+        }
+    }
+
+    void zapiszDaneUzytkownikowDoPliku ( vector <Uzytkownik> &uzytkownicy)
+    {
+        string liniaZDanymiUzytkownika = "";
+        plik.open("Uzytkownicy.txt", ios::out);
+
+        if (plik.good() == true)
+        {
+            for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
+            {
+                liniaZDanymiUzytkownika += konwerjsaIntNaString(itr -> getIdUzytkownika()) + '|';
+                liniaZDanymiUzytkownika += itr -> getNazwaUzytkownika() + '|';
+                liniaZDanymiUzytkownika += itr -> getHasloUzytkownika() + '|';
+
+                plik << liniaZDanymiUzytkownika << endl;
+                liniaZDanymiUzytkownika = "";
+            }
+            plik.close();
+            cout << "Dane zostaly zapisne." << endl;
+            system("pause");
+        }
+        else
+        {
+            cout << "Nie udalo sie otworzyc pliku i zapisac do niego danych." << endl;
+            system("pause");
+        }
+    }
+
+};
+
 /*
 Klasa odpowiedzialna m.in. za logowanie, rejestrację, zmianę hasła, wylogowanie.
 */
-
-class Uzytkownicy :public Uzytkownik
+class Uzytkownicy: public Uzytkownik, public PlikUzytkownicy
 {
     vector <Uzytkownik> uzytkownicy;
     int idZalogowanegoUzytkownika = 0;
@@ -105,7 +202,7 @@ public:
         setHasloUzytkownika(hasloUzytkownika);
         setIdUzytkownika(numerIDUzytkownika);
 
-        uzytkownicy.push_back(Uzytkownik(getIdUzytkownika(), getNazwaUzytkownika(), getHasloUzytkownika()));
+       uzytkownicy.push_back(Uzytkownik(getIdUzytkownika(), getNazwaUzytkownika(), getHasloUzytkownika()));
 
         cout<< "Konto zalozone." <<endl;
         Sleep(1000);
@@ -169,7 +266,7 @@ public:
             }
             pozycjaZnalezionejOsoby++;
         }
-        setHasloUzytkownika(hasloUzytkownika);
+  //      setHasloUzytkownika(hasloUzytkownika);
     }
 
     int wylogowanieUzytkownika()
@@ -179,18 +276,14 @@ public:
     }
 };
 
+
 int main()
 {
 
-
     Uzytkownicy ksiazka;
-    ksiazka.rejestracjaUzytkownika();
-    ksiazka.logowanieUzytkownika();
-    ksiazka.zmianaHasla();
-    ksiazka.wylogowanieUzytkownika();
-
-
-
+    //PlikUzytkownicy obiekt;
+    //obiekt.wczytajUzytkownikowZPliku();
+   // obiekt.zapiszDaneUzytkownikowDoPliku();
 
 
     return 0;
