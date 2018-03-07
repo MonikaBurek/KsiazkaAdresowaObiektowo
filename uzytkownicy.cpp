@@ -2,11 +2,13 @@
 #include "uzytkownicy.h"
 #include <windows.h>
 
+
 using namespace std;
 
 Uzytkownicy::Uzytkownicy()
 {
     int idZalogowanegoUzytkownika = 0;
+
 }
 
 Uzytkownik Uzytkownicy::podajDaneNowegoUzytkownika()
@@ -49,10 +51,11 @@ Uzytkownik Uzytkownicy::podajDaneNowegoUzytkownika()
 
 void Uzytkownicy::rejestracjaUzytkownika()
 {
-    Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
+    plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
+    Uzytkownik nowyUzytkownik = podajDaneNowegoUzytkownika();
 
-    uzytkownicy.push_back(uzytkownik);
-    //plikUzytkonicy.dopiszUzytkownikaDoPliku(uzytkownik);
+    uzytkownicy.push_back(nowyUzytkownik);
+    plikUzytkownikowAplikacji.dopiszUzytkownikaDoPliku(nowyUzytkownik);
 
     cout << endl << "Konto zalozone." << endl;
     Sleep(1000);
@@ -63,6 +66,9 @@ int Uzytkownicy::logowanieUzytkownika()
     string nazwaUzytkownika, hasloUzytkownika;
     bool znalezionyUzytkownik = 0;
     int proby = 0;
+
+    plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
+
     cout << "Podaj nazwe uzytkownika: ";
     cin >>  nazwaUzytkownika;
 
@@ -99,7 +105,7 @@ int Uzytkownicy::logowanieUzytkownika()
     return 0;
 }
 
-void Uzytkownicy::zmianaHasla()
+void Uzytkownicy::zmianaHasla(int idZalogowanegoUzytkownika)
 {
     string hasloUzytkownika;
     int pozycjaZnalezionejOsoby = 0;
@@ -117,11 +123,11 @@ void Uzytkownicy::zmianaHasla()
         pozycjaZnalezionejOsoby++;
     }
     uzytkownicy[pozycjaZnalezionejOsoby-1].ustawHasloUzytkownika(hasloUzytkownika);
+    plikUzytkownikowAplikacji.zapiszDaneUzytkownikowDoPliku(uzytkownicy);
 }
 
 int Uzytkownicy::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
-    cout << "Wylogowano uzytkownika." << endl;
     return idZalogowanegoUzytkownika;
 }

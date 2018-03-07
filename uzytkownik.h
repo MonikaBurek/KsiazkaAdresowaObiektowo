@@ -23,3 +23,5 @@ public:
     void ustawNazwaUzytkownika(string nazwa);
     void ustawHasloUzytkownika(string haslo);
 };
+
+

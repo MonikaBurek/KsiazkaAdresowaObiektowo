@@ -6,101 +6,9 @@
 #include <sstream>
 #include "uzytkownicy.h"
 
+
+
 using namespace std;
-
-/*string konwerjsaIntNaString (int liczba)
-{
-    ostringstream ss;
-    ss << liczba;
-    string lancuch = ss.str();
-    return lancuch;
-}
-
-
-Klasa odpowiedzialna za operacje na pliku Uzytkownicy.txt
-
-class PlikUzytkownicy
-{
-
-    fstream plik;
-
-public:
-    void wczytajUzytkownikowZPliku( vector <Uzytkownik> &uzytkownicy)
-    {
-        string linia;
-        string wyraz;
-        int iloscPionowychKresek = 0;
-        int ileZnakowWyjac = 0;
-        int poczatek = 0 ;
-
-        uzytkownicy.clear();
-        plik.open("Uzytkownicy.txt",ios::in); // aby otworzyc plik do odczytu
-        if (plik.good() == true)
-        {
-            while (pobierzline(plik,linia))
-            {
-                ileZnakowWyjac = 0;
-                poczatek = 0;
-                iloscPionowychKresek = 0;
-
-                for (int i = 0; i < linia.size(); i++)
-                {
-                    ileZnakowWyjac = i - poczatek;
-                    if (linia[i] == '|')
-                    {
-                        iloscPionowychKresek++;
-                        wyraz = linia.substr (poczatek,ileZnakowWyjac);
-                        switch (iloscPionowychKresek)
-                        {
-                        case 1:
-                            ustawIdUzytkownika(atoi(wyraz.c_str()));
-                            break;
-                        case 2:
-                            ustawNazwaUzytkownika(wyraz);
-                            break;
-                        case 3:
-                            ustawHasloUzytkownika(wyraz);
-                            break;
-                        }
-                        poczatek = poczatek + ileZnakowWyjac + 1;
-                    }
-                }
-
-                uzytkownicy.push_back(Uzytkownik(pobierzIdUzytkownika(), pobierzNazwaUzytkownika(), pobierzHasloUzytkownika()));
-                cout << pobierzIdUzytkownika() << pobierzNazwaUzytkownika() << pobierzHasloUzytkownika() << endl;
-            }
-            plik.close();
-        }
-    }
-
-    void zapiszDaneUzytkownikowDoPliku ( vector <Uzytkownik> &uzytkownicy)
-    {
-        string liniaZDanymiUzytkownika = "";
-        plik.open("Uzytkownicy.txt", ios::out);
-
-        if (plik.good() == true)
-        {
-            for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
-            {
-                liniaZDanymiUzytkownika += konwerjsaIntNaString(itr -> pobierzIdUzytkownika()) + '|';
-                liniaZDanymiUzytkownika += itr -> pobierzNazwaUzytkownika() + '|';
-                liniaZDanymiUzytkownika += itr -> pobierzHasloUzytkownika() + '|';
-
-                plik << liniaZDanymiUzytkownika << endl;
-                liniaZDanymiUzytkownika = "";
-            }
-            plik.close();
-            cout << "Dane zostaly zapisne." << endl;
-            system("pause");
-        }
-        else
-        {
-            cout << "Nie udalo sie otworzyc pliku i zapisac do niego danych." << endl;
-            system("pause");
-        }
-    }
-
-};*/
 
 
 
@@ -108,11 +16,95 @@ int main()
 {
 
     Uzytkownicy ksiazka1;
+    int idZalogowanegoUzytkownika = 0;
 
-    ksiazka1.rejestracjaUzytkownika();
-    ksiazka1.logowanieUzytkownika();
+    char wybranaPozycjaMenu;
 
-    ksiazka1.wylogowanieUzytkownika();
+    while(1)
+    {
+        if(idZalogowanegoUzytkownika == 0)
+        {
+            system("cls");
+            cout << "1.Rejestracja" << endl;
+            cout << "2.Logowanie" << endl;
+            cout << "9.Zamknij program" << endl;
+            cin >> wybranaPozycjaMenu;
+
+            switch(wybranaPozycjaMenu)
+            {
+            case '1':
+                ksiazka1.rejestracjaUzytkownika();
+                break;
+            case '2':
+                idZalogowanegoUzytkownika = ksiazka1.logowanieUzytkownika();
+                break;
+            case '9':
+                exit(0);
+                break;
+            }
+        }
+else
+        {
+            system("cls");
+            cout<< "Ksiazka adresowa."<<endl<<endl;
+            cout << "1.Zapisz nowego znajomego." << endl;
+            cout << "2.Wyszukaj znajomego." << endl;
+            cout << "3.Wyswietl liste znajomych." << endl;
+            cout << "4.Edytuj kontakt." << endl;
+            cout << "5.Usun kontakt." << endl;
+            cout << "6.Zmien haslo." << endl;
+            cout << "9.Wyloguj sie." << endl<<endl;
+            cin>> wybranaPozycjaMenu;
+
+            switch(wybranaPozycjaMenu)
+            {
+           /* case '1':
+                zapiszNowegoZnajomego(znajomi, idZalogowanegoUzytkownika);
+                break;
+            case '2':
+
+                system("cls");
+                cout<< "Wyszukiwanie znajomego." <<endl<< endl;
+                cout<<"1.Wyszukiwanie wg imienia." <<endl;
+                cout<<"2.Wyszukiwanie wg nazwiska." <<endl;
+                cout<<"9.Zakoncz wyszukiwanie."<< endl;
+                cin>> wybranaPozycjaMenu;
+
+                switch(wybranaPozycjaMenu)
+                {
+                case '1':
+                    szukajImie(znajomi);
+                    break;
+                case '2':
+                    szukajNazwisko(znajomi);
+                    break;
+                case '9':
+                    system("pause");
+                }
+                break;
+            case '3':
+                wyswietlWszystkichZnajomych(znajomi);
+                break;
+            case '4':
+                edytujKontakt(znajomi);
+                zapiszDaneZnajomychDoPliku(znajomi, idZalogowanegoUzytkownika);
+                break;
+            case '5':
+                usunKontakt(znajomi);
+                zapiszDaneZnajomychDoPliku(znajomi, idZalogowanegoUzytkownika);*/
+                break;
+            case '6':
+                ksiazka1.zmianaHasla(idZalogowanegoUzytkownika);
+                break;
+            case '9':
+                idZalogowanegoUzytkownika = ksiazka1.wylogowanieUzytkownika();
+                break;
+            }
+        }
+    }
+
+
+
 
 
     return 0;
