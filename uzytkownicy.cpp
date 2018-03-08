@@ -91,8 +91,7 @@ void PlikUzytkownicy::wczytajUzytkownikowZPliku( vector <Uzytkownik> &uzytkownic
             }
 
             uzytkownicy.push_back(uzytkownik);
-            //cout << uzytkownik.pobierzIdUzytkownika() << " " << endl;
-            //cout << uzytkownik.pobierzNazwaUzytkownika() << " " << uzytkownik.pobierzHasloUzytkownika() << endl;
+
         }
         plik.close();
     }
@@ -129,7 +128,7 @@ void PlikUzytkownicy::zapiszDaneUzytkownikowDoPliku( vector <Uzytkownik> &uzytko
 void PlikUzytkownicy::dopiszUzytkownikaDoPliku(Uzytkownik nowyUzytkownik)
 {
    string liniaZDanymiUzytkownika = "";
-    plik.open("Uzytkownicy.txt", ios::out | ios::app);
+   plik.open("Uzytkownicy.txt", ios::out | ios::app);
 
     if (plik.good() == true)
     {
@@ -199,7 +198,12 @@ Uzytkownik Uzytkownicy::podajDaneNowegoUzytkownika()
 
 void Uzytkownicy::rejestracjaUzytkownika()
 {
+    bool czyPlikJestPusty;
+    czyPlikJestPusty = plikUzytkownikowAplikacji.czyPlikJestPusty("Uzytkownicy.txt");
+
+    if (czyPlikJestPusty == 0)
     plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
+
     Uzytkownik nowyUzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(nowyUzytkownik);
@@ -214,8 +218,13 @@ int Uzytkownicy::logowanieUzytkownika()
     string nazwaUzytkownika, hasloUzytkownika;
     bool znalezionyUzytkownik = 0;
     int proby = 0;
+    bool czyPlikJestPusty;
 
+    czyPlikJestPusty = plikUzytkownikowAplikacji.czyPlikJestPusty("Uzytkownicy.txt");
+
+    if (czyPlikJestPusty == 0)
     plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
+
 
     cout << "Podaj nazwe uzytkownika: ";
     cin >>  nazwaUzytkownika;
@@ -253,24 +262,29 @@ int Uzytkownicy::logowanieUzytkownika()
     return 0;
 }
 
-void Uzytkownicy::zmianaHasla(int idZalogowanegoUzytkownika)
+void Uzytkownicy::zmianaHasla( int idZalogowanegoUzytkownika)
 {
     string hasloUzytkownika;
     int pozycjaZnalezionejOsoby = 0;
+
     cout << "Podaj nowe haslo: ";
     cin >> hasloUzytkownika;
+
+    plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
 
     for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
     {
         if(itr -> pobierzIdUzytkownika() == idZalogowanegoUzytkownika)
         {
             uzytkownicy[pozycjaZnalezionejOsoby].pobierzHasloUzytkownika() = hasloUzytkownika;
-            cout << "Haslo zostalo zmienione"<< endl;
+            uzytkownicy[pozycjaZnalezionejOsoby].ustawHasloUzytkownika(hasloUzytkownika);
+            cout << "Haslo zostalo zmienione." << endl;
             Sleep(1500);
         }
         pozycjaZnalezionejOsoby++;
     }
-    uzytkownicy[pozycjaZnalezionejOsoby-1].ustawHasloUzytkownika(hasloUzytkownika);
+
+
     plikUzytkownikowAplikacji.zapiszDaneUzytkownikowDoPliku(uzytkownicy);
 }
 
@@ -278,4 +292,19 @@ int Uzytkownicy::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
     return idZalogowanegoUzytkownika;
+}
+
+bool Plik::czyPlikJestPusty(string nazwaPliku)
+{
+    int dlugosc;
+
+    plik.open(nazwaPliku.c_str());
+    plik.seekg(0, ios::end); // Przejście na koniec pliku
+
+    dlugosc = plik.tellg();  // Sprawdzamy pozycję, która odpowiada długości pliku!
+
+ if (dlugosc == 0)
+    return 1;//"Plik jest pusty." << endl;
+ else
+    return 0; //"Plik zawiera dane." << endl;
 }

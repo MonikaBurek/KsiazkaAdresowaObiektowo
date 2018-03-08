@@ -55,7 +55,7 @@ else
             switch(wybranaPozycjaMenu)
             {
            /* case '1':
-                zapiszNowegoZnajomego(znajomi, idZalogowanegoUzytkownika);
+
                 break;
             case '2':
 
@@ -69,25 +69,23 @@ else
                 switch(wybranaPozycjaMenu)
                 {
                 case '1':
-                    szukajImie(znajomi);
+
                     break;
                 case '2':
-                    szukajNazwisko(znajomi);
+
                     break;
                 case '9':
                     system("pause");
                 }
                 break;
             case '3':
-                wyswietlWszystkichZnajomych(znajomi);
+
                 break;
             case '4':
-                edytujKontakt(znajomi);
-                zapiszDaneZnajomychDoPliku(znajomi, idZalogowanegoUzytkownika);
+            ;
                 break;
             case '5':
-                usunKontakt(znajomi);
-                zapiszDaneZnajomychDoPliku(znajomi, idZalogowanegoUzytkownika);*/
+               */
                 break;
             case '6':
                 ksiazka1.zmianaHasla(idZalogowanegoUzytkownika);

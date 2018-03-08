@@ -20,17 +20,27 @@ public:
     string pobierzNazwaUzytkownika();
     string pobierzHasloUzytkownika();
 
-    //Ustawia (set) numer ID uzytkownika, nazwê
+    //Ustawia (set) numer ID uzytkownika, nazwÃª
     void ustawIdUzytkownika(int idUzytkownika);
     void ustawNazwaUzytkownika(string nazwa);
     void ustawHasloUzytkownika(string haslo);
+};
+/*
+Klasa  zawiera funkcjÄ™ czy plik jest pusty.
+*/
+class Plik
+{
+    fstream plik;
+
+public:
+    bool czyPlikJestPusty(string nazwaPliku);
 };
 
 /*
 Klasa odpowiedzialna za operacje na pliku Uzytkownicy.txt
 */
 
-class PlikUzytkownicy
+class PlikUzytkownicy :public Plik
 {
     fstream plik;
 
@@ -41,9 +51,8 @@ public:
 
 };
 
-
 /*
-Klasa odpowiedzialna m.in. za logowanie, rejestracjê, zmianê has³a, wylogowanie.
+Klasa odpowiedzialna m.in. za logowanie, rejestracjÃª, zmianÃª hasÂ³a, wylogowanie.
 */
 class Uzytkownicy
 {
@@ -59,5 +68,4 @@ public:
     void zmianaHasla(int idZalogowanegoUzytkownika);
     int wylogowanieUzytkownika();
 };
-
 
