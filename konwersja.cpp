@@ -1,9 +1,9 @@
 #include <iostream>
-#include "funkcjedodatkowe.h"
+#include "konwersja.h"
 
 using namespace std;
 
-string konwerjsaIntNaString (int liczba)
+string Konwersja::konwerjsaIntNaString(int liczba)
 {
     ostringstream ss;
     ss << liczba;
