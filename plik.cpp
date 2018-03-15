@@ -13,7 +13,7 @@ bool Plik::czyPlikJestPusty(string nazwaPliku)
     dlugosc = plik.tellg();  // Sprawdzamy pozycjê, która odpowiada d³ugoœci pliku!
 
  if (dlugosc == 0)
-    return 1;//"Plik jest pusty." << endl;
+    return 0;//"Plik jest pusty." << endl;
  else
-    return 0; //"Plik zawiera dane." << endl;
+    return 1; //"Plik zawiera dane." << endl;
 }

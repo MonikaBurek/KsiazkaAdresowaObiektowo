@@ -2,18 +2,19 @@
 #include <vector>
 #include <fstream>
 #include "znajomy.h"
+#include "uzytkownik.h"
 
 using namespace std;
 
 Znajomy::Znajomy()
 {
     numerIDZnajomego = 0;
-    idUzytkownika = 0;
+    numerIDUzytkownika = 0;
     imie = "";
     nazwisko = "";
-    adres = "";
     numerTelefonu = "";
     mail = "";
+    adres = "";
 }
 
 Znajomy::~Znajomy() {;}
@@ -22,10 +23,11 @@ int Znajomy::pobierzIdZnajomego()
 {
     return numerIDZnajomego;
 }
-/*int Znajomy::pobierzIdUzytkownika()
+
+int Znajomy::pobierzIdUzytkownika()
 {
-    return idUzytkownika
-}*/
+    return numerIDUzytkownika;
+}
 string Znajomy::pobierzImieZnajomego()
 {
     return imie;
@@ -36,25 +38,24 @@ string Znajomy::pobierzNazwiskoZnajomego()
 }
 string Znajomy::pobierzNumerTelefonuZnajomego()
 {
-    return adres;
-}
-string Znajomy::pobierzAdresZnajomego()
-{
     return numerTelefonu;
 }
 string Znajomy::pobierzMailZnajomego()
 {
     return mail;
 }
+string Znajomy::pobierzAdresZnajomego()
+{
+    return adres;
+}
 
 void Znajomy::ustawNumerIDZnajomego(int numerIDZnajomego)
 {
     this -> numerIDZnajomego = numerIDZnajomego;
 }
-
-void Znajomy::ustawIdUzytkownika(int idUzytkownika)
+void Znajomy::ustawNumerIDUzytkownika(int numerIDUzytkownika)
 {
-    this -> idUzytkownika = idUzytkownika;
+    this -> numerIDUzytkownika = numerIDUzytkownika;
 }
 void Znajomy::ustawImieZnajomego(string imie)
 {
@@ -64,10 +65,6 @@ void Znajomy::ustawNazwiskoZnajomego(string nazwisko)
 {
     this -> nazwisko = nazwisko;
 }
-void Znajomy::ustawAdresZnajomego(string adres)
-{
-    this -> adres = adres;
-}
 void Znajomy::ustawNumerTelefonuZnajomego(string numerTelefonu)
 {
     this -> numerTelefonu = numerTelefonu;
@@ -76,4 +73,7 @@ void Znajomy::ustawMailZnajomego(string mail)
 {
     this -> mail = mail;
 }
-
+void Znajomy::ustawAdresZnajomego(string adres)
+{
+    this -> adres = adres;
+}

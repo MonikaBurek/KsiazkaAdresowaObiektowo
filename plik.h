@@ -6,7 +6,7 @@
 
 using namespace std;
 /*
-Klasa  zawiera funkcjê czy plik jest pusty.
+Klasa  zawiera funkcje czy plik jest pusty.
 */
 class Plik
 {
@@ -15,6 +15,5 @@ class Plik
 public:
     bool czyPlikJestPusty(string nazwaPliku);
 };
-
 
 #endif

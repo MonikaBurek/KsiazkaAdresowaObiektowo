@@ -5,14 +5,16 @@
 #include <fstream>
 #include <sstream>
 #include "uzytkownicy.h"
+#include "ksiazkaadresowa.h"
 
 using namespace std;
 
 int main()
 {
 
-    Uzytkownicy ksiazka1;
+    Uzytkownicy listaUzytkownikow;
     int idZalogowanegoUzytkownika = 0;
+    KsiazkaAdresowa listaZnajomych;
 
     char wybranaPozycjaMenu;
 
@@ -29,10 +31,10 @@ int main()
             switch(wybranaPozycjaMenu)
             {
             case '1':
-                ksiazka1.rejestracjaUzytkownika();
+                listaUzytkownikow.rejestracjaUzytkownika();
                 break;
             case '2':
-                idZalogowanegoUzytkownika = ksiazka1.logowanieUzytkownika();
+                idZalogowanegoUzytkownika = listaUzytkownikow.logowanieUzytkownika();
                 break;
             case '9':
                 exit(0);
@@ -54,10 +56,10 @@ else
 
             switch(wybranaPozycjaMenu)
             {
-           /* case '1':
-
+            case '1':
+                listaZnajomych.zapiszNowegoZnajomego(idZalogowanegoUzytkownika);
                 break;
-            case '2':
+            /*case '2':
 
                 system("cls");
                 cout<< "Wyszukiwanie znajomego." <<endl<< endl;
@@ -88,10 +90,10 @@ else
                */
                 break;
             case '6':
-                ksiazka1.zmianaHasla(idZalogowanegoUzytkownika);
+                listaUzytkownikow.zmianaHasla(idZalogowanegoUzytkownika);
                 break;
             case '9':
-                idZalogowanegoUzytkownika = ksiazka1.wylogowanieUzytkownika();
+                idZalogowanegoUzytkownika = listaUzytkownikow.wylogowanieUzytkownika();
                 break;
             }
         }

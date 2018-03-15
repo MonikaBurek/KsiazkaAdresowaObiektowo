@@ -56,7 +56,7 @@ void Uzytkownicy::rejestracjaUzytkownika()
     bool czyPlikJestPusty;
     czyPlikJestPusty = plikUzytkownikowAplikacji.czyPlikJestPusty("Uzytkownicy.txt");
 
-    if (czyPlikJestPusty == 0)
+    if (czyPlikJestPusty == 1)
     plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
 
     Uzytkownik nowyUzytkownik = podajDaneNowegoUzytkownika();
@@ -77,7 +77,7 @@ int Uzytkownicy::logowanieUzytkownika()
 
     czyPlikJestPusty = plikUzytkownikowAplikacji.czyPlikJestPusty("Uzytkownicy.txt");
 
-    if (czyPlikJestPusty == 0)
+    if (czyPlikJestPusty == 1)
     plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
 
 

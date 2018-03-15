@@ -1,3 +1,6 @@
+#ifndef ZNAJOMY_H
+#define ZNAJOMY_H
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -12,7 +15,7 @@ Klasa na podstawie ktorej jest tworzony Znajomy.(gettery i settery).
 class Znajomy
 {
     string imie, nazwisko, adres, numerTelefonu, mail;
-    int numerIDZnajomego, idUzytkownika;
+    int numerIDZnajomego, numerIDUzytkownika;
 
 public:
      // Konstruktor domyslny
@@ -21,7 +24,7 @@ public:
 
     //Zwraca (get) numer ID nazwe i haslo Uzytkownika
     int pobierzIdZnajomego();
-    //int pobierzIdUzytkownika()
+    int pobierzIdUzytkownika();
     string pobierzImieZnajomego();
     string pobierzNazwiskoZnajomego();
     string pobierzNumerTelefonuZnajomego();
@@ -30,10 +33,12 @@ public:
 
     //Ustawia (set) numer ID uzytkownika, nazwê
     void ustawNumerIDZnajomego(int numerIDZnajomego);
-    void ustawIdUzytkownika(int idUzytkownika);
+    void ustawNumerIDUzytkownika(int numerIDUzytkownika);
     void ustawImieZnajomego(string imie);
     void ustawNazwiskoZnajomego(string nazwisko);
     void ustawAdresZnajomego(string adres);
     void ustawNumerTelefonuZnajomego(string numerTelefonu);
     void ustawMailZnajomego(string mail);
 };
+
+#endif // ZNAJOMY_H
