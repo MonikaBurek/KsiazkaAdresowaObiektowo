@@ -18,12 +18,11 @@ class KsiazkaAdresowa
 public:
   Znajomy podajDaneNowegoZnajomego(int idZalogowanegoUzytkownika);
   void zapiszNowegoZnajomego(int idZalogowanegoUzytkownika);
-  void wyswietlWszystkichZnajomych();
-  void szukajImie();
-  void szukajNazwisko();
-  void edytujKontakt ();
-  void usunKontakt ();
-
+  void szukajImie(int idZalogowanegoUzytkownika);
+  void szukajNazwisko(int idZalogowanegoUzytkownika);
+  void wyswietlWszystkichZnajomych(int idZalogowanegoUzytkownika);
+  void edytujKontakt(int idZalogowanegoUzytkownika);
+  void usunKontakt(int idZalogowanegoUzytkownika);
 };
 
 #endif

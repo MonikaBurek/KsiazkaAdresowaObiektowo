@@ -83,13 +83,12 @@ void PlikZnajomi::dopiszZnajomegoDoPliku(Znajomy nowyZnajomy)
 
 void PlikZnajomi::zapiszZnajomychUzytkownikaDoWektora (vector <Znajomy> &znajomi, string linia, int iloscZnajomych)
 {
-string wyraz;
+    string wyraz;
     int iloscPionowychKresek = 0;
     int ileZnakowWyjac = 0;
     int poczatek = 0 ;
 
     Znajomy nowyZnajomy;
-    znajomi.clear();
 
     ileZnakowWyjac = 0;
     poczatek = 0;
@@ -129,6 +128,7 @@ string wyraz;
             poczatek = poczatek + ileZnakowWyjac + 1;
         }
     }
+    znajomi.push_back(nowyZnajomy);
 }
 
 void PlikZnajomi::wczytajZnajomychZPliku(vector <Znajomy> &znajomi, int idZalogowanegoUzytkownika)
@@ -260,8 +260,8 @@ void PlikZnajomi::zapiszDaneZnajomychDoPliku(vector <Znajomy> &znajomi, int idZa
             liniaZDanymiZnajomego += itr -> pobierzImieZnajomego() + '|';
             liniaZDanymiZnajomego += itr -> pobierzNazwiskoZnajomego() + '|';
             liniaZDanymiZnajomego += itr -> pobierzNumerTelefonuZnajomego() + '|';
-            liniaZDanymiZnajomego += itr -> pobierzAdresZnajomego() + '|';
             liniaZDanymiZnajomego += itr -> pobierzMailZnajomego() + '|';
+            liniaZDanymiZnajomego += itr -> pobierzAdresZnajomego() + '|';
 
             plik << liniaZDanymiZnajomego << endl;
             liniaZDanymiZnajomego = "";

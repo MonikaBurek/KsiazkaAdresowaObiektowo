@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>138</x>
+      <y>0</y>
+      <w>222</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Uzytkownicy
+--
+-uzytkownicy:vector &lt;Uzytkownik&gt;
+-PlikUzytkownicy plikUzytkownikowAplikacji
+-idZalogowanegoUzytkownika:int
+--
+Uzytkownicy():
++podajDaneNowegoUzytkownika:Uzytkownik
++rejestracjaUzytkownika:void 
++logowanieUzytkownika:int 
++zmianaHasla:void 
++wylogowanieUzytkownika:int </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>42</x>
+      <y>162</y>
+      <w>138</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>PlikUzytkownicy
+--
+-plik:fstream
+--
++wczytajUzytkownikowZPliku:void
++zapiszDaneUzytkownikowDoPliku:void
++dopiszUzytkownikaDoPliku:void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>162</y>
+      <w>144</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Uzytkownik
+--
+-idUzytkownika:int
+-nazwa:string
+-haslo:string
+--
++Uzytkownik:
++~Uzytkownik:virtual
++pobierzIdUzytkownika:int
++pobierzNazwaUzytkownika:string
++pobierzHasloUzytkownika:string
++ustawIdUzytkownika:void
++ustawNazwaUzytkownika:void
++ustawHasloUzytkownika:void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>174</x>
+      <y>234</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>156</x>
+      <y>108</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>108</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>516</x>
+      <y>0</y>
+      <w>180</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>KsiazkaAdresowa
+--
+-znajomi:vector &lt;Znajomy&gt; 
+-PlikZnajomi plikZnajomiUzytkownika
+--
++podajDaneNowegoZnajomego:Znajomy
++zapiszNowegoZnajomego:void
++szukajImie:void
++szukajNazwisko:void
++wyswietlWszystkichZnajomych:void
++edytujKontakt:void
++usunKontakt:void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>438</x>
+      <y>162</y>
+      <w>168</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>Znajomy
+--
+-imie:string
+-nazwisko:string
+-numerTelefonu:string
+-mail:string
+-adres:string
+-numerIDZnajomego:int
+-numerIDUzytkownika:int
+--
++Znajomy:
++~Znajomy:virtual
++pobierzIdZnajomego:int
++pobierzIdUzytkownika:int
++pobierzImieZnajomego:string
++pobierzNazwiskoZnajomego:string
++pobierzNumerTelefonuZnajomego:string
++pobierzMailZnajomego:string
++pobierzAdresZnajomego:string
++ustawNumerIDZnajomego:void
++ustawNumerIDUzytkownika:void
++ustawImieZnajomego:void
++ustawNazwiskoZnajomego:void
++ustawNumerTelefonuZnajomego:void
++ustawMailZnajomego:void
++ustawAdresZnajomego:void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>672</x>
+      <y>162</y>
+      <w>186</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>PlikZnajomi
+--
+-plik:fstream 
+--
++znajdzKolejnyNumerIDZnajomego:int
++dopiszZnajomegoDoPliku:void 
++zapiszZnajomychUzytkownikaDoWektora:void
++wczytajZnajomychZPliku:void
++usunLinieZPliku:void
++zapiszDaneZnajomychDoPliku:void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>684</x>
+      <y>108</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>558</x>
+      <y>108</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>210</y>
+      <w>84</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>426</y>
+      <w>120</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Plik
+--
+-plik:fstream
+--
++czyPlikJestPusty:bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>474</x>
+      <y>264</y>
+      <w>294</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;340.0;470.0;340.0;470.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>288</y>
+      <w>282</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>450.0;300.0;10.0;300.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>354</x>
+      <y>522</y>
+      <w>138</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Konwersja
+--
+-liczba:int
+--
++konwersjaIntNaString:string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>354</x>
+      <y>54</y>
+      <w>174</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>546</y>
+      <w>312</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;500.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>288</y>
+      <w>306</w>
+      <h>282</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;450.0;490.0;450.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>264</y>
+      <w>18</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;490.0</additional_attributes>
+  </element>
+</diagram>

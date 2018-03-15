@@ -17,15 +17,14 @@ class PlikZnajomi :public Plik
     fstream plik;
 
 public:
-    int znajdzKolejnyNumerIDZnajomego ();
+    int znajdzKolejnyNumerIDZnajomego();
     void dopiszZnajomegoDoPliku(Znajomy nowyZnajomy);
 
-    void zapiszZnajomychUzytkownikaDoWektora (vector <Znajomy> &znajomi, string linia, int iloscZnajomych);
+    void zapiszZnajomychUzytkownikaDoWektora(vector <Znajomy> &znajomi, string linia, int iloscZnajomych);
     void wczytajZnajomychZPliku(vector <Znajomy> &znajomi, int idZalogowanegoUzytkownika);
 
     void usunLinieZPliku (int idZalogowanegoUzytkownika);
     void zapiszDaneZnajomychDoPliku(vector <Znajomy> &znajomi, int idZalogowanegoUzytkownika);
-
 };
 
 #endif // PLIKZNAJOMI_H

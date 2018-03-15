@@ -41,7 +41,7 @@ int main()
                 break;
             }
         }
-else
+        else
         {
             system("cls");
             cout<< "Ksiazka adresowa."<<endl<<endl;
@@ -59,7 +59,7 @@ else
             case '1':
                 listaZnajomych.zapiszNowegoZnajomego(idZalogowanegoUzytkownika);
                 break;
-            /*case '2':
+            case '2':
 
                 system("cls");
                 cout<< "Wyszukiwanie znajomego." <<endl<< endl;
@@ -71,23 +71,23 @@ else
                 switch(wybranaPozycjaMenu)
                 {
                 case '1':
-
+                    listaZnajomych.szukajImie(idZalogowanegoUzytkownika);
                     break;
                 case '2':
-
+                    listaZnajomych.szukajNazwisko(idZalogowanegoUzytkownika);
                     break;
                 case '9':
                     system("pause");
                 }
                 break;
             case '3':
-
+                listaZnajomych.wyswietlWszystkichZnajomych(idZalogowanegoUzytkownika);
                 break;
             case '4':
-            ;
+                listaZnajomych.edytujKontakt(idZalogowanegoUzytkownika);
                 break;
             case '5':
-               */
+                listaZnajomych.usunKontakt(idZalogowanegoUzytkownika);
                 break;
             case '6':
                 listaUzytkownikow.zmianaHasla(idZalogowanegoUzytkownika);
@@ -98,10 +98,6 @@ else
             }
         }
     }
-
-
-
-
 
     return 0;
 }

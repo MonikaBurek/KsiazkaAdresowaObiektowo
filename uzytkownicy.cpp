@@ -80,7 +80,6 @@ int Uzytkownicy::logowanieUzytkownika()
     if (czyPlikJestPusty == 1)
     plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
 
-
     cout << "Podaj nazwe uzytkownika: ";
     cin >>  nazwaUzytkownika;
 

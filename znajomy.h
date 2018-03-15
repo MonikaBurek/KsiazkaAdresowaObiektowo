@@ -14,11 +14,11 @@ Klasa na podstawie ktorej jest tworzony Znajomy.(gettery i settery).
 
 class Znajomy
 {
-    string imie, nazwisko, adres, numerTelefonu, mail;
+    string imie, nazwisko, numerTelefonu, mail, adres;
     int numerIDZnajomego, numerIDUzytkownika;
 
 public:
-     // Konstruktor domyslny
+    // Konstruktor domyslny
     Znajomy();
     virtual ~Znajomy();
 
@@ -28,17 +28,17 @@ public:
     string pobierzImieZnajomego();
     string pobierzNazwiskoZnajomego();
     string pobierzNumerTelefonuZnajomego();
-    string pobierzAdresZnajomego();
     string pobierzMailZnajomego();
+    string pobierzAdresZnajomego();
 
     //Ustawia (set) numer ID uzytkownika, nazwê
     void ustawNumerIDZnajomego(int numerIDZnajomego);
     void ustawNumerIDUzytkownika(int numerIDUzytkownika);
     void ustawImieZnajomego(string imie);
     void ustawNazwiskoZnajomego(string nazwisko);
-    void ustawAdresZnajomego(string adres);
     void ustawNumerTelefonuZnajomego(string numerTelefonu);
     void ustawMailZnajomego(string mail);
+    void ustawAdresZnajomego(string adres);
 };
 
 #endif // ZNAJOMY_H
