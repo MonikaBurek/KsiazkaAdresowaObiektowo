@@ -50,7 +50,6 @@ void PlikUzytkownicy::wczytajUzytkownikowZPliku( vector <Uzytkownik> &uzytkownic
             }
 
             uzytkownicy.push_back(uzytkownik);
-
         }
         plik.close();
     }
@@ -87,18 +86,18 @@ void PlikUzytkownicy::zapiszDaneUzytkownikowDoPliku( vector <Uzytkownik> &uzytko
 
 void PlikUzytkownicy::dopiszUzytkownikaDoPliku(Uzytkownik nowyUzytkownik)
 {
-   string liniaZDanymiUzytkownika = "";
-   plik.open("Uzytkownicy.txt", ios::out | ios::app);
-   Konwersja liczba;
+    string liniaZDanymiUzytkownika = "";
+    plik.open("Uzytkownicy.txt", ios::out | ios::app);
+    Konwersja liczba;
 
     if (plik.good() == true)
     {
-            liniaZDanymiUzytkownika += liczba.konwerjsaIntNaString(nowyUzytkownik.pobierzIdUzytkownika()) + '|';
-            liniaZDanymiUzytkownika += nowyUzytkownik.pobierzNazwaUzytkownika() + '|';
-            liniaZDanymiUzytkownika += nowyUzytkownik.pobierzHasloUzytkownika() + '|';
+        liniaZDanymiUzytkownika += liczba.konwerjsaIntNaString(nowyUzytkownik.pobierzIdUzytkownika()) + '|';
+        liniaZDanymiUzytkownika += nowyUzytkownik.pobierzNazwaUzytkownika() + '|';
+        liniaZDanymiUzytkownika += nowyUzytkownik.pobierzHasloUzytkownika() + '|';
 
-            plik << liniaZDanymiUzytkownika << endl;
-            liniaZDanymiUzytkownika = "";
+        plik << liniaZDanymiUzytkownika << endl;
+        liniaZDanymiUzytkownika = "";
 
         plik.close();
         cout << "Dane zostaly zapisne." << endl;

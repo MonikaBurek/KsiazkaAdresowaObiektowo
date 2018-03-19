@@ -5,6 +5,10 @@
 
 using namespace std;
 
+/*
+Klasa na podstawie ktorej jest tworzony Uzytkownik.(gettery i settery).
+*/
+
 class Uzytkownik
 {
     int idUzytkownika;

@@ -9,8 +9,12 @@ using namespace std;
 
 Uzytkownicy::Uzytkownicy()
 {
-    int idZalogowanegoUzytkownika = 0;
+    idZalogowanegoUzytkownika = 0;
+}
 
+int Uzytkownicy::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
 }
 
 Uzytkownik Uzytkownicy::podajDaneNowegoUzytkownika()
@@ -57,7 +61,7 @@ void Uzytkownicy::rejestracjaUzytkownika()
     czyPlikJestPusty = plikUzytkownikowAplikacji.czyPlikJestPusty("Uzytkownicy.txt");
 
     if (czyPlikJestPusty == 1)
-    plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
+        plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
 
     Uzytkownik nowyUzytkownik = podajDaneNowegoUzytkownika();
 
@@ -78,7 +82,7 @@ int Uzytkownicy::logowanieUzytkownika()
     czyPlikJestPusty = plikUzytkownikowAplikacji.czyPlikJestPusty("Uzytkownicy.txt");
 
     if (czyPlikJestPusty == 1)
-    plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
+        plikUzytkownikowAplikacji.wczytajUzytkownikowZPliku(uzytkownicy);
 
     cout << "Podaj nazwe uzytkownika: ";
     cin >>  nazwaUzytkownika;
@@ -116,7 +120,7 @@ int Uzytkownicy::logowanieUzytkownika()
     return 0;
 }
 
-void Uzytkownicy::zmianaHasla( int idZalogowanegoUzytkownika)
+void Uzytkownicy::zmianaHasla( )
 {
     string hasloUzytkownika;
     int pozycjaZnalezionejOsoby = 0;
@@ -128,7 +132,7 @@ void Uzytkownicy::zmianaHasla( int idZalogowanegoUzytkownika)
 
     for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
     {
-        if(itr -> pobierzIdUzytkownika() == idZalogowanegoUzytkownika)
+        if(itr -> pobierzIdUzytkownika() == pobierzIdZalogowanegoUzytkownika())
         {
             uzytkownicy[pozycjaZnalezionejOsoby].pobierzHasloUzytkownika() = hasloUzytkownika;
             uzytkownicy[pozycjaZnalezionejOsoby].ustawHasloUzytkownika(hasloUzytkownika);

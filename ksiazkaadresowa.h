@@ -10,19 +10,22 @@ using namespace std;
 /*
 Klasa odpowiedzialna m.in. za dodawanie nowego znajomego, edycje usuwanie, wyszukiwanie.
 */
+
 class KsiazkaAdresowa
 {
     vector <Znajomy> znajomi;
     PlikZnajomi plikZnajomiUzytkownika;
+    int IDZalogowanegoUzytkownika;
 
 public:
-  Znajomy podajDaneNowegoZnajomego(int idZalogowanegoUzytkownika);
-  void zapiszNowegoZnajomego(int idZalogowanegoUzytkownika);
-  void szukajImie(int idZalogowanegoUzytkownika);
-  void szukajNazwisko(int idZalogowanegoUzytkownika);
-  void wyswietlWszystkichZnajomych(int idZalogowanegoUzytkownika);
-  void edytujKontakt(int idZalogowanegoUzytkownika);
-  void usunKontakt(int idZalogowanegoUzytkownika);
+    KsiazkaAdresowa(int IDZalogowanegoUzytkownika);
+    Znajomy podajDaneNowegoZnajomego();
+    void zapiszNowegoZnajomego();
+    void szukajImie();
+    void szukajNazwisko();
+    void wyswietlWszystkichZnajomych();
+    void edytujKontakt();
+    void usunKontakt();
 };
 
 #endif

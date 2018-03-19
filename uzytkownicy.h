@@ -10,6 +10,7 @@ using namespace std;
 /*
 Klasa odpowiedzialna m.in. za logowanie, rejestracjê, zmianê has³a, wylogowanie.
 */
+
 class Uzytkownicy
 {
     vector <Uzytkownik> uzytkownicy;
@@ -19,9 +20,10 @@ class Uzytkownicy
 public:
     Uzytkownicy();
     Uzytkownik podajDaneNowegoUzytkownika();
+    int pobierzIdZalogowanegoUzytkownika();
     void rejestracjaUzytkownika();
     int logowanieUzytkownika();
-    void zmianaHasla(int idZalogowanegoUzytkownika);
+    void zmianaHasla();
     int wylogowanieUzytkownika();
 };
 

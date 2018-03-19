@@ -6,8 +6,12 @@
 
 using namespace std;
 
+KsiazkaAdresowa::KsiazkaAdresowa(int idLoginUser)
+{
+    IDZalogowanegoUzytkownika = idLoginUser;
+}
 
-Znajomy KsiazkaAdresowa::podajDaneNowegoZnajomego(int idZalogowanegoUzytkownika)
+Znajomy KsiazkaAdresowa::podajDaneNowegoZnajomego()
 {
     string imie, nazwisko, adres, numerTelefonu, mail;
     int IDZnajomego, IDUzytkownika;
@@ -29,7 +33,7 @@ Znajomy KsiazkaAdresowa::podajDaneNowegoZnajomego(int idZalogowanegoUzytkownika)
     getline(cin,adres);
 
     IDZnajomego = plikZnajomiUzytkownika.znajdzKolejnyNumerIDZnajomego();
-    IDUzytkownika = idZalogowanegoUzytkownika;
+    IDUzytkownika = IDZalogowanegoUzytkownika;
 
     nowyZnajomy.ustawNumerIDZnajomego(IDZnajomego);
     nowyZnajomy.ustawNumerIDUzytkownika(IDUzytkownika);
@@ -42,15 +46,15 @@ Znajomy KsiazkaAdresowa::podajDaneNowegoZnajomego(int idZalogowanegoUzytkownika)
     return nowyZnajomy;
 }
 
-void KsiazkaAdresowa::zapiszNowegoZnajomego(int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::zapiszNowegoZnajomego()
 {
     bool czyPlikJestPusty;
     czyPlikJestPusty = plikZnajomiUzytkownika.czyPlikJestPusty("Ksiazkaadresowa.txt");
 
     if (czyPlikJestPusty == 1) //"Plik zawiera dane." << endl;
-        plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi, idZalogowanegoUzytkownika);
+        plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi, IDZalogowanegoUzytkownika);
 
-    Znajomy nowyZnajomy = podajDaneNowegoZnajomego(idZalogowanegoUzytkownika);
+    Znajomy nowyZnajomy = podajDaneNowegoZnajomego();
 
     znajomi.push_back(nowyZnajomy);
     plikZnajomiUzytkownika.dopiszZnajomegoDoPliku(nowyZnajomy);
@@ -59,9 +63,9 @@ void KsiazkaAdresowa::zapiszNowegoZnajomego(int idZalogowanegoUzytkownika)
     Sleep(1000);
 }
 
-void KsiazkaAdresowa::szukajImie(int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::szukajImie()
 {
-    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,idZalogowanegoUzytkownika);
+    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,IDZalogowanegoUzytkownika);
 
     string poszukiwaneImie;
     bool znalezionyZnajomy = 0;
@@ -90,9 +94,9 @@ void KsiazkaAdresowa::szukajImie(int idZalogowanegoUzytkownika)
     system("pause");
 }
 
-void KsiazkaAdresowa::szukajNazwisko(int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::szukajNazwisko()
 {
-    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,idZalogowanegoUzytkownika);
+    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,IDZalogowanegoUzytkownika);
 
     string poszukiwaneNazwisko;
     bool znalezionyZnajomy = 0;
@@ -121,9 +125,9 @@ void KsiazkaAdresowa::szukajNazwisko(int idZalogowanegoUzytkownika)
     system("pause");
 }
 
-void KsiazkaAdresowa::wyswietlWszystkichZnajomych(int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::wyswietlWszystkichZnajomych()
 {
-    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,idZalogowanegoUzytkownika);
+    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,IDZalogowanegoUzytkownika);
 
     for (vector <Znajomy>::iterator itr = znajomi.begin(); itr != znajomi.end(); itr++)
     {
@@ -138,7 +142,7 @@ void KsiazkaAdresowa::wyswietlWszystkichZnajomych(int idZalogowanegoUzytkownika)
     system("pause");
 }
 
-void KsiazkaAdresowa::edytujKontakt(int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::edytujKontakt()
 {
     string numerTelefonu, mail, adres;
     char wybranaPozycjaMenu;
@@ -147,7 +151,7 @@ void KsiazkaAdresowa::edytujKontakt(int idZalogowanegoUzytkownika)
     bool znalezionyZnajomy = 0;
     int pozycjaZnalezionejOsoby = 0;
 
-    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi, idZalogowanegoUzytkownika);
+    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi, IDZalogowanegoUzytkownika);
 
     cout << "Wyszukanie znajomego. Podaj numer ID znajomego: ";
     cin >> poszukiwanyNumerID;
@@ -231,14 +235,14 @@ void KsiazkaAdresowa::edytujKontakt(int idZalogowanegoUzytkownika)
         system("pause");
     }
 
-    plikZnajomiUzytkownika.zapiszDaneZnajomychDoPliku(znajomi,idZalogowanegoUzytkownika);
+    plikZnajomiUzytkownika.zapiszDaneZnajomychDoPliku(znajomi,IDZalogowanegoUzytkownika);
 }
 
-void KsiazkaAdresowa::usunKontakt(int idZalogowanegoUzytkownika)
+void KsiazkaAdresowa::usunKontakt()
 {
     int poszukiwanyNumerID;
 
-    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,idZalogowanegoUzytkownika);
+    plikZnajomiUzytkownika.wczytajZnajomychZPliku(znajomi,IDZalogowanegoUzytkownika);
 
     cout << "Wyszukanie znajomego. Podaj numer ID znajomego: ";
     cin >> poszukiwanyNumerID;
@@ -254,6 +258,6 @@ void KsiazkaAdresowa::usunKontakt(int idZalogowanegoUzytkownika)
         }
     }
 
-    plikZnajomiUzytkownika.zapiszDaneZnajomychDoPliku(znajomi,idZalogowanegoUzytkownika);
+    plikZnajomiUzytkownika.zapiszDaneZnajomychDoPliku(znajomi,IDZalogowanegoUzytkownika);
 }
 

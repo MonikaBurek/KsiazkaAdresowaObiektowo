@@ -53,22 +53,22 @@ int PlikZnajomi::znajdzKolejnyNumerIDZnajomego ()
 
 void PlikZnajomi::dopiszZnajomegoDoPliku(Znajomy nowyZnajomy)
 {
-   string liniaZDanymiZnajomego = "";
-   plik.open("KsiazkaAdresowa.txt", ios::out | ios::app);
-   Konwersja liczba;
+    string liniaZDanymiZnajomego = "";
+    plik.open("KsiazkaAdresowa.txt", ios::out | ios::app);
+    Konwersja liczba;
 
     if (plik.good() == true)
     {
-            liniaZDanymiZnajomego += liczba.konwerjsaIntNaString(nowyZnajomy.pobierzIdZnajomego()) + '|';
-            liniaZDanymiZnajomego += liczba.konwerjsaIntNaString(nowyZnajomy.pobierzIdUzytkownika()) + '|';
-            liniaZDanymiZnajomego += nowyZnajomy.pobierzImieZnajomego() + '|';
-            liniaZDanymiZnajomego += nowyZnajomy.pobierzNazwiskoZnajomego() + '|';
-            liniaZDanymiZnajomego += nowyZnajomy.pobierzNumerTelefonuZnajomego() + '|';
-            liniaZDanymiZnajomego += nowyZnajomy.pobierzMailZnajomego() + '|';
-            liniaZDanymiZnajomego += nowyZnajomy.pobierzAdresZnajomego() + '|';
+        liniaZDanymiZnajomego += liczba.konwerjsaIntNaString(nowyZnajomy.pobierzIdZnajomego()) + '|';
+        liniaZDanymiZnajomego += liczba.konwerjsaIntNaString(nowyZnajomy.pobierzIdUzytkownika()) + '|';
+        liniaZDanymiZnajomego += nowyZnajomy.pobierzImieZnajomego() + '|';
+        liniaZDanymiZnajomego += nowyZnajomy.pobierzNazwiskoZnajomego() + '|';
+        liniaZDanymiZnajomego += nowyZnajomy.pobierzNumerTelefonuZnajomego() + '|';
+        liniaZDanymiZnajomego += nowyZnajomy.pobierzMailZnajomego() + '|';
+        liniaZDanymiZnajomego += nowyZnajomy.pobierzAdresZnajomego() + '|';
 
-            plik << liniaZDanymiZnajomego << endl;
-            liniaZDanymiZnajomego = "";
+        plik << liniaZDanymiZnajomego << endl;
+        liniaZDanymiZnajomego = "";
 
         plik.close();
         cout << "Dane zostaly zapisane." << endl;
@@ -221,7 +221,7 @@ void PlikZnajomi::usunLinieZPliku (int idZalogowanegoUzytkownika)
     nowyPlik.open("PlikBezLinii.txt");
     plik.open("KsiazkaAdresowa.txt", ios::in);
 
-     while (getline(plik,linia))
+    while (getline(plik,linia))
     {
         znalezionaLinia = 0;
         for( int i = 0; i < linieDoUsuniecia.size(); i++ )

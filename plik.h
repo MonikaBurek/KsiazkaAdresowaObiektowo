@@ -5,9 +5,11 @@
 #include <fstream>
 
 using namespace std;
+
 /*
 Klasa  zawiera funkcje czy plik jest pusty.
 */
+
 class Plik
 {
     fstream plik;

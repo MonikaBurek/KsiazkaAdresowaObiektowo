@@ -17,7 +17,10 @@ Znajomy::Znajomy()
     adres = "";
 }
 
-Znajomy::~Znajomy() {;}
+Znajomy::~Znajomy()
+{
+    ;
+}
 
 int Znajomy::pobierzIdZnajomego()
 {

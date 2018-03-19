@@ -11,16 +11,13 @@ using namespace std;
 
 int main()
 {
-
     Uzytkownicy listaUzytkownikow;
-    int idZalogowanegoUzytkownika = 0;
-    KsiazkaAdresowa listaZnajomych;
 
     char wybranaPozycjaMenu;
 
     while(1)
     {
-        if(idZalogowanegoUzytkownika == 0)
+        if(listaUzytkownikow.pobierzIdZalogowanegoUzytkownika() == 0)
         {
             system("cls");
             cout << "1.Rejestracja" << endl;
@@ -32,17 +29,19 @@ int main()
             {
             case '1':
                 listaUzytkownikow.rejestracjaUzytkownika();
+
                 break;
             case '2':
-                idZalogowanegoUzytkownika = listaUzytkownikow.logowanieUzytkownika();
+                listaUzytkownikow.logowanieUzytkownika();
                 break;
             case '9':
                 exit(0);
                 break;
             }
         }
-        else
+        else if(listaUzytkownikow.pobierzIdZalogowanegoUzytkownika() > 0)
         {
+            KsiazkaAdresowa listaZnajomych(listaUzytkownikow.pobierzIdZalogowanegoUzytkownika());
             system("cls");
             cout<< "Ksiazka adresowa."<<endl<<endl;
             cout << "1.Zapisz nowego znajomego." << endl;
@@ -57,7 +56,7 @@ int main()
             switch(wybranaPozycjaMenu)
             {
             case '1':
-                listaZnajomych.zapiszNowegoZnajomego(idZalogowanegoUzytkownika);
+                listaZnajomych.zapiszNowegoZnajomego();
                 break;
             case '2':
 
@@ -71,29 +70,29 @@ int main()
                 switch(wybranaPozycjaMenu)
                 {
                 case '1':
-                    listaZnajomych.szukajImie(idZalogowanegoUzytkownika);
+                    listaZnajomych.szukajImie();
                     break;
                 case '2':
-                    listaZnajomych.szukajNazwisko(idZalogowanegoUzytkownika);
+                    listaZnajomych.szukajNazwisko();
                     break;
                 case '9':
                     system("pause");
                 }
                 break;
             case '3':
-                listaZnajomych.wyswietlWszystkichZnajomych(idZalogowanegoUzytkownika);
+                listaZnajomych.wyswietlWszystkichZnajomych();
                 break;
             case '4':
-                listaZnajomych.edytujKontakt(idZalogowanegoUzytkownika);
+                listaZnajomych.edytujKontakt();
                 break;
             case '5':
-                listaZnajomych.usunKontakt(idZalogowanegoUzytkownika);
+                listaZnajomych.usunKontakt();
                 break;
             case '6':
-                listaUzytkownikow.zmianaHasla(idZalogowanegoUzytkownika);
+                listaUzytkownikow.zmianaHasla();
                 break;
             case '9':
-                idZalogowanegoUzytkownika = listaUzytkownikow.wylogowanieUzytkownika();
+                listaUzytkownikow.wylogowanieUzytkownika();
                 break;
             }
         }
@@ -101,3 +100,4 @@ int main()
 
     return 0;
 }
+

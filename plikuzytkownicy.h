@@ -20,7 +20,6 @@ public:
     void wczytajUzytkownikowZPliku(vector <Uzytkownik> &uzytkownicy);
     void zapiszDaneUzytkownikowDoPliku (vector <Uzytkownik> &uzytkownicy);
     void dopiszUzytkownikaDoPliku(Uzytkownik nowyUzytkownik);
-
 };
 
 #endif // PLIKUZYTKOWNICY_H
